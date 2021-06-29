@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: dev-relias-template
+  name: dev-relias-template
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: dev-relias-template
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: dev-relias-template
+    spec:
+      containers:
+        - image: gcr.io/relias-dev/dev-relias-template
+          imagePullPolicy: Always
+          name: dev-relias-template
+          ports:
+            - containerPort: 8108
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 150m
+              memory: 1Gi
+            requests:
+              cpu: 100m
+              memory: 950Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: dev-relias-template
+  name: dev-relias-template
+  namespace: default
+spec:
+  ports:
+    - name: dev-relias-template
+      nodePort: 30100
+      port: 8108
+      protocol: TCP
+      targetPort: 8108
+  selector:
+    run: dev-relias-template
+  type: NodePort
+

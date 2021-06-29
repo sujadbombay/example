@@ -1,0 +1,28 @@
+
+
+mongock:
+  change-logs-scan-package:
+    - com.relias.smartmatch.user.config.dbmigrations
+  mongo-db:
+    read-concern: local
+    write-concern:
+      journal: false
+
+spring:
+  application:
+    name: user
+  jackson:
+    serialization:
+      write-durations-as-timestamps: false
+  data:
+    mongodb:
+      host: localhost
+      port: 0
+      database: user
+
+server:
+  port: 10344
+  address: localhost
+
+
+

@@ -1,0 +1,5 @@
+
+${AnsiColor.GREEN}    _     _     _     _
+${AnsiColor.GREEN}   / \   / \   / \   / \
+${AnsiColor.GREEN}  ( U ) ( S ) ( E ) ( R )
+${AnsiColor.GREEN}   \_/   \_/   \_/   \_/

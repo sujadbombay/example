@@ -1,0 +1,11 @@
+apiVersion: skaffold/v1beta3
+kind: Config
+build:
+  artifacts:
+    - image: us.gcr.io/relias-dev/dev-relias-template
+  local:
+    useBuildkit: false
+deploy:
+  kubectl:
+    manifests:
+      - k8-pod.yml
